@@ -1,0 +1,21 @@
+uuid: c2f08908-3c7d-4d4f-b143-5116c17be51c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mdm
+    - node.type.lcc
+_core:
+  default_config_hash: Rp0c1hhVxamCLGyzw8MYAwnHnJgICsjEN8_bsBv-EjE
+id: node.lcc.field_mdm
+field_name: field_mdm
+entity_type: node
+bundle: lcc
+label: MDM
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

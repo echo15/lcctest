@@ -1,0 +1,20 @@
+uuid: 0f984311-a659-498f-b8ee-9cea2a139ed2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Lt0jshSXHHl4YUa197WE_gwoCrMc8I2rqS7c-4t2K7k
+id: node.field_lcc
+field_name: field_lcc
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Contains otsuka_lcc_finder.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function otsuka_lcc_finder_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the otsuka_lcc_finder module.
+    case 'help.page.otsuka_lcc_finder':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Otsuka LCC Finder') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form_state->get('view')->id() == 'otsuka_lcc_finder') {
+    $form['field_geo_proximity']['#type'] = 'select';
+    $form['field_geo_proximity']['#options'] = [
+      '' => '#',
+      10 => '10',
+      15 => '15',
+      25 => '25',
+      50 => '50',
+    ];
+    $form['field_geo_proximity']['#weight'] = 0;
+    $form['field_geo_proximity']['#required_error'] = t('Please select a distance');
+
+    $form['field_geo_proximity-lat']['#type'] = 'value';
+    $form['field_geo_proximity-lng']['#type'] = 'value';
+
+    $form['field_geo_proximity-zip'] = [
+      '#type' => 'textfield',
+      '#placeholder' => t('ZIP code'),
+      '#size' => 5,
+      '#maxlength' => 5,
+      '#weight' => 1,
+      '#required' => !empty($form['field_geo_proximity']['#required']),
+      '#required_error' => t('Please enter a valid ZIP code.'),
+    ];
+
+    $form['#validate'][] = 'otsuka_lcc_finder_views_exposed_form_validate';
+  }
+}
+
+/**
+ * Validator for Doctors exposed form.
+ */
+function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface $form_state) {
+  $view = $form_state->get('view');
+  $distance = $form_state->getValue('field_geo_proximity');
+  $zip = $form_state->getValue('field_geo_proximity-zip');
+
+  // @see https://www.drupal.org/project/drupal/issues/1877678
+  $input = $view->getExposedInput();
+  if (!$input || !isset($input['field_geo_proximity'])) {
+    $view->build_info['abort'] = TRUE;
+    return;
+  }
+  if (!$distance) {
+    $form_state->setError($form['field_geo_proximity'], $form['field_geo_proximity']['#required_error']);
+  }
+  if (!$zip) {
+    $form_state->setError($form['field_geo_proximity-zip'], $form['field_geo_proximity-zip']['#required_error']);
+    return;
+  }
+
+  if (!preg_match('/\d{5}/', $zip)) {
+    $form_state->setError($form['field_geo_proximity-zip'], t('Please enter a valid ZIP code.'));
+  }
+  else {
+    $result = \Drupal::service('otsuka_lcc_finder.geolocation')->sendRequest("zip $zip");
+    if (
+      !$result
+      || !in_array($result['country'], ['US', 'PR', 'AS', 'GU', 'MP', 'VI'])
+      || $result['zip'] != $zip
+    ) {
+      $form_state->setError($form['field_geo_proximity-zip'], t('Please enter a valid ZIP code.'));
+    }
+    else {
+      $form_state->setValue('field_geo_proximity-lat', $result['lat']);
+      $form_state->setValue('field_geo_proximity-lng', $result['lng']);
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function otsuka_lcc_finder_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'otsuka_lcc_finder')) {
+    $view->element['#attached']['library'][] = 'otsuka_lcc_finder/geolocation';
+  }
+}

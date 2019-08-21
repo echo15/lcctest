@@ -1,0 +1,25 @@
+uuid: 9fba87c2-c5f1-483a-a3b3-17051b1975ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ipn
+    - node.type.lcc
+_core:
+  default_config_hash: HSmVeRBc0P4JqaouBHJjFBkcFNFarGvs_4NiqKlTjuM
+id: node.lcc.field_ipn
+field_name: field_ipn
+entity_type: node
+bundle: lcc
+label: IPN
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

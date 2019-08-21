@@ -1,0 +1,25 @@
+uuid: 34552837-d7e5-462a-9f72-e63ecb083363
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lcc
+    - node.type.lcc
+_core:
+  default_config_hash: A1_Qqls0mwxlV-AsDJUgUZyQfJfuroXfy90BgWKvgDs
+id: node.lcc.field_lcc
+field_name: field_lcc
+entity_type: node
+bundle: lcc
+label: LCC
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

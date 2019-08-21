@@ -1,0 +1,20 @@
+uuid: b1a039df-19c3-4464-a10b-83dd00098f23
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: IrvlslVSMmIu_wB0VyNk7327HB-8lDSGW1DMZzf1ay0
+name: LCC
+type: lcc
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

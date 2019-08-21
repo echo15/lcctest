@@ -1,0 +1,25 @@
+uuid: c39bfb32-e321-45eb-87a6-bc88c3664c5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ipn_shipping
+    - node.type.lcc
+_core:
+  default_config_hash: Vjpyzv6DkP-SUzfZTNvGyBWXN8XVbOPCu0QwWA-Co1U
+id: node.lcc.field_ipn_shipping
+field_name: field_ipn_shipping
+entity_type: node
+bundle: lcc
+label: 'IPN Shipping'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

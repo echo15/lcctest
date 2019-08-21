@@ -1,0 +1,20 @@
+uuid: 5da620fe-1927-4421-a552-af26717fa0e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: g87OuXuWJjj5t9quMRTpyLbUMNALQTkIhHQIzWl6bAI
+id: node.field_ipn
+field_name: field_ipn
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

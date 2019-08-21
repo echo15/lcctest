@@ -1,0 +1,9 @@
+name: 'LCC Finder'
+type: module
+description: 'Otsuka LCC Finder'
+core: 8.x
+package: 'otsuka'
+dependencies:
+  - drupal:address
+  - drupal:telephone
+  - drupal:geolocation

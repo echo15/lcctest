@@ -1,0 +1,20 @@
+uuid: f5344470-9d60-4eb8-911d-e6b57ddf2215
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.lcc
+  module:
+    - user
+id: node.lcc.teaser
+targetEntityType: node
+bundle: lcc
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
