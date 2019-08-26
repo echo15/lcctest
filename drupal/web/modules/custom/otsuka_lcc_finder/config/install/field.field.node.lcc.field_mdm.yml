@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_mdm
     - node.type.lcc
+_core:
+  default_config_hash: Rp0c1hhVxamCLGyzw8MYAwnHnJgICsjEN8_bsBv-EjE
 id: node.lcc.field_mdm
 field_name: field_mdm
 entity_type: node

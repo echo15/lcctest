@@ -10,7 +10,7 @@ dependencies:
     - field.field.node.lcc.field_ipn
     - field.field.node.lcc.field_ipn_shipping
     - field.field.node.lcc.field_lcc
-    - field.field.node.lcc.field_lcc_ipn
+    - field.field.node.lcc.field_lcc_type
     - field.field.node.lcc.field_mdm
     - field.field.node.lcc.field_npi
     - field.field.node.lcc.field_phone
@@ -79,13 +79,12 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_lcc_ipn:
-    type: boolean_checkbox
-    weight: 15
-    region: content
-    settings:
-      display_label: true
+  field_lcc_type:
+    weight: 26
+    settings: {  }
     third_party_settings: {  }
+    type: options_select
+    region: content
   field_mdm:
     type: string_textfield
     weight: 17

@@ -78,8 +78,8 @@ display:
                 longitude: ''
               enable: false
             client_location:
+              enable: true
               weight: 0
-              enable: false
               settings:
                 update_map: '0'
           show_raw_locations: 0
@@ -107,8 +107,8 @@ display:
             preferScrollingToZooming: 0
             disableDoubleClickZoom: 0
             style: ''
-            info_auto_display: 0
-            marker_icon_path: 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=•|00b0a9'
+            info_auto_display: 1
+            marker_icon_path: ''
             disableAutoPan: 0
       row:
         type: fields
@@ -776,44 +776,6 @@ display:
               1: {  }
               2: {  }
               3: {  }
-          plugin_id: boolean
-        field_lcc_ipn_value:
-          id: field_lcc_ipn_value
-          table: node__field_lcc_ipn
-          field: field_lcc_ipn_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value: All
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: LCC+IPN
-            description: ''
-            use_operator: false
-            operator: field_lcc_ipn_value_op
-            identifier: field_lcc_ipn_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
           plugin_id: boolean
       sorts:
         field_geo_proximity:

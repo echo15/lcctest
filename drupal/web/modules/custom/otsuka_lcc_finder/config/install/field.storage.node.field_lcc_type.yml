@@ -1,0 +1,30 @@
+uuid: add7fbd8-110f-47fe-bc79-c9df67f3383e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_lcc_type
+field_name: field_lcc_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: lcc
+      label: LCC
+    -
+      value: ipn
+      label: IPN
+    -
+      value: lccipn
+      label: LCC+IPN
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

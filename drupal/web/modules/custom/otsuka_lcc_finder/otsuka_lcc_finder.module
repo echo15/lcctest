@@ -30,14 +30,14 @@ function otsuka_lcc_finder_help($route_name, RouteMatchInterface $route_match) {
  */
 function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
   if ($form_state->get('view')->id() == 'lcc_finder') {
-    $form['field_geo_proximity']['#type'] = 'select';
+    $form['field_geo_proximity']['#type'] = 'radios';
+    $form['field_geo_proximity']['#default_value'] = 20;
     $form['field_geo_proximity']['#options'] = [
-      '' => '#',
+      5 => '5',
       10 => '10',
-      15 => '15',
-      25 => '25',
-      50 => '50',
+      20 => '20',
     ];
+
     $form['field_geo_proximity']['#weight'] = 0;
     $form['field_geo_proximity']['#required_error'] = t('Please select a distance');
 

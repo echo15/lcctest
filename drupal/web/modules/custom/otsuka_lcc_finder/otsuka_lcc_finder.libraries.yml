@@ -1,9 +1,3 @@
-services:
-  otsuka_lcc_finder.lcc_view_subscriber:
-    class: \Drupal\otsuka_lcc_finder\EventSubscriber\LCCViewSubscriber
-    arguments: ['@router.no_access_checks', '@current_user', '@current_route_match']
-    tags:
-      - { name: 'event_subscriber' }
   geolocation:
     version: VERSION
     js:

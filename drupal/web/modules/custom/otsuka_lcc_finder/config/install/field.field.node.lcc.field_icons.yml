@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_icons
     - node.type.lcc
+_core:
+  default_config_hash: ohu3qMb4MR2QPBxm0OyJu1Yau4D_B0ZeFdgQgR7hy-4
 id: node.lcc.field_icons
 field_name: field_icons
 entity_type: node

@@ -1,0 +1,21 @@
+uuid: 60997a2e-78c4-413a-b74a-e1d7b024070d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lcc_type
+    - node.type.lcc
+  module:
+    - options
+id: node.lcc.field_lcc_type
+field_name: field_lcc_type
+entity_type: node
+bundle: lcc
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

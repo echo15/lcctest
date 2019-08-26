@@ -43,6 +43,7 @@
           marker.index = i;
           marker.addListener('click', function (e) {
             var $rows = $('.lcc-finder-tool').has(map.container).find('.views-row');
+            console.log($rows);
             var $container = $rows.parents('.form-wrapper').eq(0);
 
             if (!$rows.get(this.index)) {
