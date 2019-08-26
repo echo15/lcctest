@@ -1,0 +1,21 @@
+uuid: 973b85b5-0c77-4f52-b82f-36422e5f1402
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_fax
+field_name: field_fax
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

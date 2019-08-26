@@ -6,3 +6,6 @@ package: 'otsuka'
 dependencies:
   - drupal:address
   - drupal:geolocation
+  - drupal:views
+  - drupal:node
+  - drupal:better_exposed_filters

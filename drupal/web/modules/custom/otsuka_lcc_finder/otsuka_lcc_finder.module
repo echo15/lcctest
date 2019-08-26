@@ -31,11 +31,11 @@ function otsuka_lcc_finder_help($route_name, RouteMatchInterface $route_match) {
 function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
   if ($form_state->get('view')->id() == 'lcc_finder') {
     $form['field_geo_proximity']['#type'] = 'radios';
-    $form['field_geo_proximity']['#default_value'] = 20;
+    $form['field_geo_proximity']['und']['#default_value'] = 20;
     $form['field_geo_proximity']['#options'] = [
-      5 => '5',
-      10 => '10',
-      20 => '20',
+      5 => '5 mi',
+      10 => '10 mi',
+      20 => '20 mi',
     ];
 
     $form['field_geo_proximity']['#weight'] = 0;
@@ -123,4 +123,13 @@ function otsuka_lcc_finder_theme_suggestions_views_view_alter(array &$suggestion
 function otsuka_lcc_finder_theme_suggestions_views_exposed_form_alter(array &$suggestions, array $variables) {
   // @todo Move to theme.
   $suggestions[] = 'views_exposed_form__' . str_replace('-', '_', $variables['form']['#id']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function otsuka_lcc_finder_preprocess_views_view__lcc_finder__page_1(&$variables) {
+  $view = $variables['view'];
+  $variables['count'] = count($view->result);
+  $variables['aborted'] = !empty($view->build_info['abort']);
 }

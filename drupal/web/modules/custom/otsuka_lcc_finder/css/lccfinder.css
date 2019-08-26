@@ -1,0 +1,42 @@
+#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-geo-proximity {
+    display: inline-block;
+}
+
+#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-lcc-value {
+    display: inline-block;
+}
+
+#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-ipn-value {
+    display: inline-block;
+}
+
+#views-exposed-form-lcc-finder-page-1 .inline-content .form-control {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 0;
+}
+
+#edit-field-geo-proximity {
+    display: inline-block;
+}
+
+.detailAddressDesktop {
+    border: 1px solid black;
+    height: 630px;
+    overflow-y: scroll;
+    background-color: #ffffff;
+    opacity: 1;
+    padding: 10px 18px 10px 20px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.detailAddressDesktop .views-row {
+    border-bottom: 1px solid #999999;
+    padding: 10px 0;
+}
+
+.detailAddressDesktop .views-field-title span {
+    font-weight: bold;
+    color: #f84d00;
+}
