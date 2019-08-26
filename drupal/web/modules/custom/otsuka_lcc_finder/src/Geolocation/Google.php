@@ -58,14 +58,11 @@ class Google implements GeoInterface {
     elseif (!empty($this->geolocationSettings->get('google_map_api_key'))) {
       $api_key = $this->geolocationSettings->get('google_map_api_key');
     }
-
     if ($api_key) {
       $url .= '&key=' . $api_key;
     }
-
     $response = $this->httpClient->get($url)->getBody();
     $geocodeData = json_decode($response);
-
     $coordinates = FALSE;
     if (!empty($geocodeData) && $geocodeData->status != 'ZERO_RESULTS' && isset($geocodeData->results) && isset($geocodeData->results[0])) {
       $coordinates = [

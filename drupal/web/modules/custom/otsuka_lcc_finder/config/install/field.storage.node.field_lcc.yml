@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: Lt0jshSXHHl4YUa197WE_gwoCrMc8I2rqS7c-4t2K7k
 id: node.field_lcc
 field_name: field_lcc
 entity_type: node

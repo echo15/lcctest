@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: g87OuXuWJjj5t9quMRTpyLbUMNALQTkIhHQIzWl6bAI
 id: node.field_ipn
 field_name: field_ipn
 entity_type: node

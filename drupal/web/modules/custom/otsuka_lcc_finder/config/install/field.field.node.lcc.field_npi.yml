@@ -1,4 +1,4 @@
-uuid: f3319356-f851-4495-9ef7-3a642ef15eed
+uuid: 56a8b179-732b-483e-bbff-4d955457ddb7
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ entity_type: node
 bundle: lcc
 label: NPI
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -20,4 +20,4 @@ settings:
   max: null
   prefix: ''
   suffix: ''
-field_type: integer
+field_type: float

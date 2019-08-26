@@ -29,7 +29,7 @@ function otsuka_lcc_finder_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_form_FORM_ID_alter().
  */
 function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
-  if ($form_state->get('view')->id() == 'otsuka_lcc_finder') {
+  if ($form_state->get('view')->id() == 'lcc_finder') {
     $form['field_geo_proximity']['#type'] = 'select';
     $form['field_geo_proximity']['#options'] = [
       '' => '#',
@@ -59,13 +59,12 @@ function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterf
 }
 
 /**
- * Validator for Doctors exposed form.
+ * Validator for Lcc Finder exposed form.
  */
 function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface $form_state) {
   $view = $form_state->get('view');
   $distance = $form_state->getValue('field_geo_proximity');
   $zip = $form_state->getValue('field_geo_proximity-zip');
-
   // @see https://www.drupal.org/project/drupal/issues/1877678
   $input = $view->getExposedInput();
   if (!$input || !isset($input['field_geo_proximity'])) {
@@ -103,7 +102,25 @@ function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface
  * Implements hook_views_pre_render().
  */
 function otsuka_lcc_finder_views_pre_render(ViewExecutable $view) {
-  if (isset($view) && ($view->storage->id() == 'otsuka_lcc_finder')) {
+  if (isset($view) && ($view->storage->id() == 'lcc_finder')) {
     $view->element['#attached']['library'][] = 'otsuka_lcc_finder/geolocation';
   }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function otsuka_lcc_finder_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  // @todo Move to theme.
+  $suggestions[] = 'views_view__' . $variables['view']->id();
+  $suggestions[] = 'views_view__' . $variables['view']->id() . '__' . $variables['view']->current_display;
+}
+
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function otsuka_lcc_finder_theme_suggestions_views_exposed_form_alter(array &$suggestions, array $variables) {
+  // @todo Move to theme.
+  $suggestions[] = 'views_exposed_form__' . str_replace('-', '_', $variables['form']['#id']);
 }

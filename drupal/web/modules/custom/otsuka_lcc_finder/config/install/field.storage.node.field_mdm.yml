@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: crBsG9xjKfIKhgrV7qCGosviTD-uuslJuCP8nvplcMI
 id: node.field_mdm
 field_name: field_mdm
 entity_type: node

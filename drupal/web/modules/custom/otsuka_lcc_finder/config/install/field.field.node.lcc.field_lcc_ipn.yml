@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_lcc_ipn
     - node.type.lcc
-_core:
-  default_config_hash: 5zpe1hDaG5Q2rx7CJ7Wz1TUT1dmJC-Mz8Nm7henXt-M
 id: node.lcc.field_lcc_ipn
 field_name: field_lcc_ipn
 entity_type: node

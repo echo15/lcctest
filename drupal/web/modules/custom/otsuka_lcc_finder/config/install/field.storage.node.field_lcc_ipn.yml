@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: vctf7XxgxZa2dsNkVawfK7BXK30NyWS0GxeATUot22A
 id: node.field_lcc_ipn
 field_name: field_lcc_ipn
 entity_type: node

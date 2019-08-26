@@ -1,20 +1,12 @@
-geolocation:
-  version: VERSION
-  js:
-    js/geolocation.js: {}
-  dependencies:
-    - geolocation/geolocation.googlemapsapi
-
-ion_range_slider:
-  version: 2.3.0
-  license:
-    name: MIT
-    url: https://github.com/IonDen/ion.rangeSlider/blob/master/License.md
-  js:
-    //cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js: { type: external, minified: true }
-  dependencies:
-    - core/jquery
-  css:
-    theme:
-      //cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css: { type: external, minified: true }
-
+services:
+  otsuka_lcc_finder.lcc_view_subscriber:
+    class: \Drupal\otsuka_lcc_finder\EventSubscriber\LCCViewSubscriber
+    arguments: ['@router.no_access_checks', '@current_user', '@current_route_match']
+    tags:
+      - { name: 'event_subscriber' }
+  geolocation:
+    version: VERSION
+    js:
+      js/geolocation.js: {}
+    dependencies:
+      - geolocation/geolocation.googlemapsapi

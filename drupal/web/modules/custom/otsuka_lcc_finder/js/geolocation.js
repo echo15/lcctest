@@ -8,9 +8,8 @@
   Drupal.behaviors.otsukaLccFinderGeolocation = {
     attach: function (context) {
       var self = this;
-
       if (
-        $('.doctor-finder-tool', context).length
+        $('.lcc-finder-tool', context).length
         && settings.geolocation
         && settings.geolocation.commonMap
       ) {
@@ -43,7 +42,7 @@
           marker.otsukaJynarqueHccGeolocation = true;
           marker.index = i;
           marker.addListener('click', function (e) {
-            var $rows = $('.doctor-finder-tool').has(map.container).find('.views-row');
+            var $rows = $('.lcc-finder-tool').has(map.container).find('.views-row');
             var $container = $rows.parents('.form-wrapper').eq(0);
 
             if (!$rows.get(this.index)) {

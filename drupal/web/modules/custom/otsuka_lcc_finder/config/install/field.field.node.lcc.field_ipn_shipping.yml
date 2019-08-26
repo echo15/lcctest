@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_ipn_shipping
     - node.type.lcc
-_core:
-  default_config_hash: Vjpyzv6DkP-SUzfZTNvGyBWXN8XVbOPCu0QwWA-Co1U
 id: node.lcc.field_ipn_shipping
 field_name: field_ipn_shipping
 entity_type: node

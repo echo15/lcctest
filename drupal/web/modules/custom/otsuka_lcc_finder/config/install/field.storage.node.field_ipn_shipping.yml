@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: FKLx7_-jta-idqud0C4hOU2ZPNVhnieJaDRyF1zaslw
 id: node.field_ipn_shipping
 field_name: field_ipn_shipping
 entity_type: node

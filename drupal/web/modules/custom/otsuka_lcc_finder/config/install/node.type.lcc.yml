@@ -9,8 +9,6 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-_core:
-  default_config_hash: IrvlslVSMmIu_wB0VyNk7327HB-8lDSGW1DMZzf1ay0
 name: LCC
 type: lcc
 description: ''

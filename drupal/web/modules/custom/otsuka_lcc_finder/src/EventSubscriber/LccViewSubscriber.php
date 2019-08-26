@@ -43,7 +43,7 @@ class LccViewSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Process doctor view page.
+   * Process lcc_finder view page.
    *
    * @param \Symfony\Component\HttpKernel\Event\KernelEvent $event
    *   Event.
