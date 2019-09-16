@@ -1,0 +1,5 @@
+selectra.default:
+  title: Selectra Exercise
+  route_name: selectra.code_exercise
+  weight: 2
+  menu_name: main

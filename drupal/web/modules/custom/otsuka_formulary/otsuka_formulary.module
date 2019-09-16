@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the assueapi module.
+ */
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function otsuka_formulary_preprocess_html(&$variables) {
+  $variables['html']['#attached']['library'][] = 'otsuka_formulary/otsuka_formulary';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function otsuka_formulary_theme() {
+  return [
+    'otsuka_formulary_result' => [
+      'variables' => [
+        'components' => [],
+        'form' => NULL,
+        'mailstring' => '',
+      ],
+    ],
+    'otsuka_formulary_result_component' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_otsuka_formulary_result(&$variables) {
+  $default = [
+    '#id' => '',
+    '#label' => '',
+    '#value' => '',
+  ];
+  foreach ($variables['components'] as &$value) {
+    $value['#theme'] = 'otsuka_formulary_result_component';
+    $value += $default;
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_otsuka_formulary_result_component(&$variables) {
+  $elements = $variables['elements'];
+  $id = $elements['#id'];
+  $attributes = &$variables['attributes'];
+  $title_attributes = &$variables['title_attributes'];
+  $variables['label'] = $elements['#label'];
+  $variables['value'] = $elements['#value'];
+
+  $title_attributes['class'][] = 'field-label';
+  if ($id) {
+    $title_attributes['for'] = $id;
+  }
+
+  $attributes['class'][] = 'formulary-val';
+  if ($id) {
+    $attributes['class'][] = "$id-val";
+  }
+
+  switch ($id) {
+    case 'rexulti':
+      $variables['title_attributes']['class'][] = 'brand-name';
+      $variables['title_attributes']['brand-name'] = $variables['label'];
+      $variables['attributes']['class'][] = 'formulary-status';
+      $variables['label'] .= ' ' . t('Status');
+      break;
+
+    case 'contact':
+      $variables['title_attributes']['for'] = 'health-plan-contact';
+      break;
+  }
+}

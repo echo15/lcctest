@@ -1,0 +1,21 @@
+selectra_test_two.tax_entity.*:
+  type: config_entity
+  label: 'Tax entity config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    percentage:
+      type: string
+      label: 'Percentage'
+    product_types:
+      type: sequence
+      label: 'Product types'
+      sequence:
+        type: string
+        label: 'Product type'
+    uuid:
+      type: string

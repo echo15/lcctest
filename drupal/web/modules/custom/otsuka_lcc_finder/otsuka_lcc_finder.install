@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall hooks for the module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function otsuka_lcc_finder_uninstall() {
+  // Delete all nodes of given content type.
+  // @TODO don't delete node automatically, check that used deleted them with
+  // custom \Drupal\Core\Extension\ModuleUninstallValidatorInterface
+  // implementation.
+  $storage_handler = \Drupal::entityTypeManager()
+    ->getStorage('node');
+  $nodes = $storage_handler->loadByProperties(['type' => 'lcc']);
+  if ($nodes) {
+    $storage_handler->delete($nodes);
+  }
+
+  // Delete content type.
+  $content_type = \Drupal::entityTypeManager()
+    ->getStorage('node_type')
+    ->load('lcc');
+  if ($content_type) {
+    $content_type->delete();
+  }
+
+  $view = \Drupal::entityTypeManager()
+    ->getStorage('view')
+    ->load('lcc_finder');
+  if ($view) {
+    $view->delete();
+  }
+}

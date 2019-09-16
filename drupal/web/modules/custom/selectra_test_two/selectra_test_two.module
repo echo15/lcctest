@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains selectra_test_two.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function selectra_test_two_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the selectra_test_two module.
+    case 'help.page.selectra_test_two':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Selectra Test Case Two') . '</p>';
+      return $output;
+
+    default:
+  }
+}

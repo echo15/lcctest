@@ -1,0 +1,14 @@
+uuid: 8a3bb791-76c6-406f-96a5-98c6eb7ab381
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rh4JNxovjmw5cT3TzBt-GLO7JQ9Xp8OexhkUBAzTwPk
+id: imported_products_tax
+label: 'Imported Products Tax'
+percentage: '5'
+product_types:
+  other: other
+  book: book
+  food: food
+  medical: medical

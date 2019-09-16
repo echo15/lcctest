@@ -1,0 +1,10 @@
+otsuka_formulary.settings:
+  title: 'Formulary API Settings'
+  parent: system.admin_config
+  description: 'Configure Formulary API Settings.'
+  route_name: otsuka_formulary.settings
+otsuka_formulary.admin_settings:
+  title: 'Formulary Forumulary API'
+  parent: otsuka_formulary.settings
+  description: "Configure Formulary API URL's"
+  route_name: otsuka_formulary.admin_settings

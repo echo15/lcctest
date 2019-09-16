@@ -1,0 +1,13 @@
+otsuka_formulary:
+  js:
+    js/otsuka_formulary.js: {}
+  css:
+    theme:
+        css/otsuka_formulary.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/underscore
+    - core/drupalSettings
+    - core/drupal.ajax
+    - core/jquery.once

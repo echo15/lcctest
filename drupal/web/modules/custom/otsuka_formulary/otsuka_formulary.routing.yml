@@ -1,0 +1,51 @@
+otsuka_formulary.mmitabilifymaintenainsurance:
+ path: '/AbilifyMaintena/InsuranceFinder'
+ defaults:
+   _title: 'Abilify Maintena Insurance information'
+   _form: '\Drupal\otsuka_formulary\Form\MMITInsuranceFormData'
+ requirements:
+   _permission: 'access content'   
+otsuka_formulary.mmitrexultiinsurance:
+ path: '/Rexulti/InsuranceFinder'
+ defaults:
+   _title: 'Rexulti Insurance information'
+   _form: '\Drupal\otsuka_formulary\Form\MMITInsuranceFormData'
+ requirements:
+   _permission: 'access content'  
+otsuka_formulary.mmitinsurancedata:
+ path: '/mmitinsurancedata'
+ defaults:
+   _title: 'Insurance information'
+   _controller: '\Drupal\otsuka_formulary\Controller\FormularyAPIController::mmitinsurancedata'
+   _format: json
+ requirements:
+   _permission: 'access content'
+otsuka_formulary.insurance:
+ path: '/SAMSCA/InsuranceFinder'
+ defaults:
+   _title: 'Insurance information'
+   _form: '\Drupal\otsuka_formulary\Form\InsuranceFormData'
+ requirements:
+   _permission: 'access content'
+otsuka_formulary.insurancedata:
+ path: '/insurancedata'
+ defaults:
+   _title: 'Insurance information'
+   _controller: '\Drupal\otsuka_formulary\Controller\FormularyAPIController::insurancedata'
+   _format: json
+ requirements:
+   _permission: 'access content'
+otsuka_formulary.settings:
+  path: '/admin/config/otsuka_formulary'
+  defaults: 
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Formulary API'
+  requirements:
+    _permission: 'administer formulary api settings'
+otsuka_formulary.admin_settings:
+ path: '/admin/config/otsuka_formulary/settings'
+ defaults:
+   _form: '\Drupal\otsuka_formulary\Form\FormularyConfigurationForm'
+   _title: 'Formulary API configuration'
+ requirements:
+     _permission: 'administer formulary api settings'

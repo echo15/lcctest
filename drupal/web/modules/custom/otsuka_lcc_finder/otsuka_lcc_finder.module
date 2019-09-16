@@ -6,8 +6,9 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\views\ViewExecutable;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_help().
@@ -30,8 +31,11 @@ function otsuka_lcc_finder_help($route_name, RouteMatchInterface $route_match) {
  */
 function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
   if ($form_state->get('view')->id() == 'lcc_finder') {
+    $form['field_geo_proximity-lat']['#type'] = 'value';
+    $form['field_geo_proximity-lng']['#type'] = 'value';
+    $form['field_geo_proximity']['#title'] = t('Distance') . ':';
     $form['field_geo_proximity']['#type'] = 'radios';
-    $form['field_geo_proximity']['und']['#default_value'] = 20;
+    $form['field_geo_proximity'][LanguageInterface::LANGCODE_NOT_SPECIFIED]['#default_value'] = 20;
     $form['field_geo_proximity']['#options'] = [
       5 => '5 mi',
       10 => '10 mi',
@@ -41,15 +45,12 @@ function otsuka_lcc_finder_form_views_exposed_form_alter(&$form, FormStateInterf
     $form['field_geo_proximity']['#weight'] = 0;
     $form['field_geo_proximity']['#required_error'] = t('Please select a distance');
 
-    $form['field_geo_proximity-lat']['#type'] = 'value';
-    $form['field_geo_proximity-lng']['#type'] = 'value';
-
     $form['field_geo_proximity-zip'] = [
       '#type' => 'textfield',
+      '#title' => t('ZIP code') . ':',
       '#placeholder' => t('ZIP code'),
-      '#size' => 5,
+      '#size' => 8,
       '#maxlength' => 5,
-      '#weight' => 1,
       '#required' => !empty($form['field_geo_proximity']['#required']),
       '#required_error' => t('Please enter a valid ZIP code.'),
     ];
@@ -71,6 +72,7 @@ function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface
     $view->build_info['abort'] = TRUE;
     return;
   }
+
   if (!$distance) {
     $form_state->setError($form['field_geo_proximity'], $form['field_geo_proximity']['#required_error']);
   }
@@ -83,11 +85,16 @@ function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface
     $form_state->setError($form['field_geo_proximity-zip'], t('Please enter a valid ZIP code.'));
   }
   else {
-    $result = \Drupal::service('otsuka_lcc_finder.geolocation')->sendRequest("zip $zip");
-    if (
-      !$result
-      || !in_array($result['country'], ['US', 'PR', 'AS', 'GU', 'MP', 'VI'])
-      || $result['zip'] != $zip
+    $result = \Drupal::service('otsuka_lcc_finder.geolocation')
+      ->sendRequest("zip $zip");
+    if (!$result || !in_array($result['country'], [
+        'US',
+        'PR',
+        'AS',
+        'GU',
+        'MP',
+        'VI'
+      ]) || $result['zip'] != $zip
     ) {
       $form_state->setError($form['field_geo_proximity-zip'], t('Please enter a valid ZIP code.'));
     }
@@ -104,32 +111,14 @@ function otsuka_lcc_finder_views_exposed_form_validate($form, FormStateInterface
 function otsuka_lcc_finder_views_pre_render(ViewExecutable $view) {
   if (isset($view) && ($view->storage->id() == 'lcc_finder')) {
     $view->element['#attached']['library'][] = 'otsuka_lcc_finder/geolocation';
+
+    // Handle LCC/IPN behavior for filtering. And hide not needed field.
+    $exposed_data = $view->exposed_data;
+    if (isset($exposed_data['field_type_value']) && isset($exposed_data['field_type_value']['ipn'])) {
+      unset($view->field['field_ipn']);
+    }
+    else {
+      unset($view->field['field_lcc']);
+    }
   }
-}
-
-/**
- * Implements hook_theme_suggestions_HOOK_alter().
- */
-function otsuka_lcc_finder_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
-  // @todo Move to theme.
-  $suggestions[] = 'views_view__' . $variables['view']->id();
-  $suggestions[] = 'views_view__' . $variables['view']->id() . '__' . $variables['view']->current_display;
-}
-
-
-/**
- * Implements hook_theme_suggestions_HOOK_alter().
- */
-function otsuka_lcc_finder_theme_suggestions_views_exposed_form_alter(array &$suggestions, array $variables) {
-  // @todo Move to theme.
-  $suggestions[] = 'views_exposed_form__' . str_replace('-', '_', $variables['form']['#id']);
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function otsuka_lcc_finder_preprocess_views_view__lcc_finder__page_1(&$variables) {
-  $view = $variables['view'];
-  $variables['count'] = count($view->result);
-  $variables['aborted'] = !empty($view->build_info['abort']);
 }

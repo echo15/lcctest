@@ -1,42 +1,82 @@
-#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-geo-proximity {
-    display: inline-block;
+/*!
+ * LCC finder widget base classes.
+ */
+
+.lcc-finder-view .views-exposed-form .form-item,
+.lcc-finder-view .views-exposed-form .form-actions {
+  float: none;
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+.lcc-finder-view .views-exposed-form .form-item .form-item {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.lcc-finder-view .views-exposed-form fieldset,
+.lcc-finder-view .views-exposed-form .form-type-textfield,
+.lcc-finder-view .views-exposed-form .form-actions,
+.lcc-finder-view .views-exposed-form .form-type-radio {
+  display: inline-block;
+}
+.lcc-finder-view .views-exposed-form fieldset,
+.lcc-finder-view .views-exposed-form .form-type-textfield,
+.lcc-finder-view .views-exposed-form .form-actions {
+  margin-right: 1em;
+}
+.lcc-finder-view .views-exposed-form fieldset[data-drupal-selector="edit-field-ipn-value"] {
+  margin-right: 0;
+}
+.lcc-finder-view .view-content {
+  padding: 10px;
+  border: 1px #000 solid;
+}
+.lcc-finder-view .attachment .view-content {
+  padding: 0;
+  border: 0;
+}
+.lcc-finder-view .view-content .views-row {
+  margin-bottom: 2em;
+}
+.lcc-finder-view .view-content .views-field-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.lcc-finder-view .view-content .geolocation-common-map {
+  height: 400px;
+}
+.lcc-finder-view .view-header {
+  margin-bottom: 2em;
 }
 
-#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-lcc-value {
-    display: inline-block;
-}
-
-#views-exposed-form-lcc-finder-page-1 .inline-content .form-item-field-ipn-value {
-    display: inline-block;
-}
-
-#views-exposed-form-lcc-finder-page-1 .inline-content .form-control {
-    display: inline-block;
-    width: 40%;
-    margin: 10px 0;
-}
-
-#edit-field-geo-proximity {
-    display: inline-block;
-}
-
-.detailAddressDesktop {
-    border: 1px solid black;
-    height: 630px;
+@media (min-width: 768px) {
+  .lcc-finder-view {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lcc-finder-view .lcc-finder-view {
+    display: block;
+  }
+  .lcc-finder-view > * {
+    flex-basis: 100%;
+  }
+  .lcc-finder-view .attachment-before {
+    flex-basis: 66%;
+  }
+  .lcc-finder-view .view-content {
+    flex-basis: 33%;
+  }
+  .lcc-finder-view .view-content {
+    box-sizing: border-box;
+    height: 600px;
+  }
+  .lcc-finder-view .views-form {
     overflow-y: scroll;
-    background-color: #ffffff;
-    opacity: 1;
-    padding: 10px 18px 10px 20px;
-    font-size: 12px;
-    line-height: 16px;
-}
-
-.detailAddressDesktop .views-row {
-    border-bottom: 1px solid #999999;
-    padding: 10px 0;
-}
-
-.detailAddressDesktop .views-field-title span {
-    font-weight: bold;
-    color: #f84d00;
+    height: 100%;
+  }
+  .lcc-finder-view .attachment .view-content {
+    overflow-y: hidden;
+  }
+  .lcc-finder-view .view-content .geolocation-common-map {
+    height: 600px;
+  }
 }

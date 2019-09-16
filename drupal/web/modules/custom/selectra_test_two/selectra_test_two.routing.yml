@@ -1,0 +1,7 @@
+selectra_test_two.selectra_form:
+  path: '/selectra/test-two'
+  defaults:
+    _form: '\Drupal\selectra_test_two\Form\SelectraForm'
+    _title: 'SelectraForm'
+  requirements:
+    _access: 'TRUE'

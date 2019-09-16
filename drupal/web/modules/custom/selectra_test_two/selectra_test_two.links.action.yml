@@ -1,0 +1,15 @@
+entity.default_tax.add_form:
+  route_name: entity.default_tax.add_form
+  title: 'Add Default tax'
+  appears_on:
+    - entity.default_tax.collection
+entity.product_entity.add_form:
+  route_name: entity.product_entity.add_form
+  title: 'Add Product entity'
+  appears_on:
+    - entity.product_entity.collection
+entity.tax_entity.add_form:
+  route_name: entity.tax_entity.add_form
+  title: 'Add Tax entity'
+  appears_on:
+    - entity.tax_entity.collection

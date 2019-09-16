@@ -9,11 +9,10 @@
     attach: function (context) {
       var self = this;
       if (
-        $('.lcc-finder-tool', context).length
+        $('.view-lcc-finder', context).length
         && settings.geolocation
         && settings.geolocation.commonMap
       ) {
-
         var processMarkers = function (map) {
           if (!window.google) {
             return;
@@ -42,9 +41,8 @@
           marker.otsukaLccGeolocation = true;
           marker.index = i;
           marker.addListener('click', function (e) {
-            var $rows = $('.lcc-finder-tool').has(map.container).find('.views-row');
-            var $container = $rows.parents('.form-wrapper').eq(0);
-
+            var $rows = $('.view-lcc-finder').has(map.container).find('.views-row');
+            var $container = $rows.parents('.views-form').eq(0);
             if (!$rows.get(this.index)) {
               return;
             }

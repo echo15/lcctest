@@ -1,0 +1,8 @@
+otsuka_formulary_formulary_api_url: 'http://api.fingertipformulary.com/'
+otsuka_formulary_formulary_api_key: '75bd45ff02a9422796acf6d4fc4b457a09abb4e5'
+otsuka_formulary_formulary_method: 'GET'
+otsuka_formulary_formulary_drug_id: 2705
+otsuka_formulary_formulary_drug_class_id: 219
+otsuka_formulary_formulary_indication_id: 60
+otsuka_formulary_mmit_formulary_api_url: 'https://api.mmitnetwork.com/Formulary/v1/'
+otsuka_formulary_mmit_formulary_authentication_url: 'https://api.mmitnetwork.com/token'

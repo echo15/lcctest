@@ -8,4 +8,7 @@ dependencies:
   - drupal:geolocation
   - drupal:views
   - drupal:node
-  - drupal:better_exposed_filters
+  - drupal:options
+  - drupal:path
+  - drupal:rate
+  - drupal:views_conditional

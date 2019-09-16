@@ -1,0 +1,21 @@
+# Product entity menu items definition
+entity.product_entity.collection:
+  title: 'Product entity list'
+  route_name: entity.product_entity.collection
+  description: 'List Product entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+product_entity.admin.structure.settings:
+  title: 'Product entity settings'
+  description: 'Configure Product entity entities'
+  route_name: product_entity.settings
+  parent: system.admin_structure
+
+# Tax entity menu items definition
+entity.tax_entity.collection:
+  title: 'Tax entity'
+  route_name: entity.tax_entity.collection
+  description: 'List Tax entity (bundles)'
+  parent: system.admin_structure
+  weight: 99

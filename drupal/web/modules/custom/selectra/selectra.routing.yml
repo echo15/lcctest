@@ -1,0 +1,8 @@
+
+selectra.code_exercise:
+  path: '/selectra'
+  defaults:
+    _controller: '\Drupal\selectra\Controller\SelectraController::build'
+    _title: 'Code Exercise Programming Instructions'
+  requirements:
+    _permission: 'access content'

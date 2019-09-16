@@ -1,0 +1,11 @@
+uuid: 6f5010ff-a260-4542-8deb-c1f9a3629a35
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: b-fk9z9vXa6ZE9nidjEVNqQMaMqp9uWuk7BoqXKd4FI
+id: default_tax
+label: 'Default Tax'
+percentage: '10'
+product_types:
+  other: other

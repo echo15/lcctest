@@ -1,0 +1,6 @@
+name: Otsuka Formaulary
+description: Formulary API integration.
+package: Otsuka Custom
+type: module
+core: 8.x
+configure: otsuka_formulary.admin_settings

@@ -1,0 +1,30 @@
+add product entity entities:
+  title: 'Create new Product entity entities'
+
+administer product entity entities:
+  title: 'Administer Product entity entities'
+  description: 'Allow to access the administration form to configure Product entity entities.'
+  restrict access: true
+
+delete product entity entities:
+  title: 'Delete Product entity entities'
+
+edit product entity entities:
+  title: 'Edit Product entity entities'
+
+view published product entity entities:
+  title: 'View published Product entity entities'
+
+view unpublished product entity entities:
+  title: 'View unpublished Product entity entities'
+
+view all product entity revisions:
+  title: 'View all Product entity revisions'
+
+revert all product entity revisions:
+  title: 'Revert all Product entity revisions'
+  description: 'Role requires permission <em>view Product entity revisions</em> and <em>edit rights</em> for product entity entities in question or <em>administer product entity entities</em>.'
+
+delete all product entity revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Product entity revisions</em> and <em>delete rights</em> for product entity entities in question or <em>administer product entity entities</em>.'

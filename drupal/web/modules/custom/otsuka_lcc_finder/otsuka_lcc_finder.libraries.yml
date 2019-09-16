@@ -1,9 +1,9 @@
-  geolocation:
-    version: VERSION
-    js:
-      js/geolocation.js: {}
-    css:
-      theme:
-        css/lccfinder.css: {}
-    dependencies:
-      - geolocation/geolocation.googlemapsapi
+geolocation:
+  version: VERSION
+  js:
+    js/geolocation.js: {}
+  css:
+    theme:
+      css/lccfinder.css: {}
+  dependencies:
+    - geolocation/geolocation.googlemapsapi

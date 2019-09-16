@@ -1,0 +1,11 @@
+services:
+  selectra_test_two.product_list_manager:
+    class: Drupal\selectra_test_two\Service\ProductListManager
+    arguments:
+          - '@entity_type.manager'
+          - '@string_translation'
+          - '@selectra_test_two.tax_calculator'
+  selectra_test_two.tax_calculator:
+      class: Drupal\selectra_test_two\Service\TaxCalculator
+      arguments:
+            - '@entity_type.manager'
