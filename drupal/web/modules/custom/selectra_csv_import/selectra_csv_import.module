@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains selectra_csv_import.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\selectra_csv_import\CSVBatchImport;
+
+/**
+ * Implements hook_help().
+ */
+function selectra_csv_import_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the selectra_csv_import module.
+    case 'help.page.selectra_csv_import':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Selectra CSV Import') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,7 @@
+selectra_csv_import.admin_settings:
+  path: '/selectra_import/form'
+  defaults:
+    _form: '\Drupal\selectra_csv_import\Form\ImportForm'
+    _title: 'Import Form'
+  requirements:
+    _permission: 'access content'

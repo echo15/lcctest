@@ -137,5 +137,15 @@ interface ProductEntityInterface extends ContentEntityInterface, RevisionLogInte
    *   The called Product entity entity.
    */
   public function setImported($imported);
+  /**
+   * Set Product type.
+   *
+   * @param string $type
+   *   Product type.
+   *
+   * @return \Drupal\selectra_test_two\Entity\ProductEntityInterface
+   *   The called Product entity entity.
+   */
+  public function setProductType($type);
 
 }

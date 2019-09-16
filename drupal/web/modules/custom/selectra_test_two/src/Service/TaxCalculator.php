@@ -22,15 +22,12 @@ class TaxCalculator implements TaxCalculatorInterface {
   }
 
   /**
- * {@inheritdoc}
- */
-  public function calculateProductFullPrice($product_id) {
+   * {@inheritdoc}
+   */
+  public function getProductTaxes($product, $price) {
     /** @var ProductEntity $product */
-    $product = $this->entityTypeManager->getStorage('product_entity')->load($product_id);
     $tax_entities = $this->entityTypeManager->getStorage('tax_entity')->loadMultiple();
-    $price = $product->getProductPrice();
     $is_imported = $product->isImported();
-    $final_price = $price;
     $additions = [];
     $product_type = $product->getProductType();
     if ($tax_entities) {
@@ -52,22 +49,55 @@ class TaxCalculator implements TaxCalculatorInterface {
           }
         }
       }
-      if ($additions && is_array($additions)) {
-        foreach ($additions as $key => $addition) {
-          $final_price = $final_price + $addition;
-          $final_price = round($final_price ,2);
-        }
-      }
-
-
     }
-    return $final_price;
+    return $additions;
+  }
+
+  /**
+ * {@inheritdoc}
+ */
+  public function calculateProductFullPrice($product_id) {
+    /** @var ProductEntity $product */
+    $product = $this->entityTypeManager->getStorage('product_entity')->load($product_id);
+    $price = $product->getProductPrice();
+    $additions = $this->getProductTaxes($product, $price);
+
+    if ($additions && count($additions)) {
+      foreach ($additions as $key => $addition) {
+        $price = $price + $addition;
+        $price = round($price ,2);
+      }
+    }
+    return $price;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function calculateOrderTaxes($product_ids) {
-
+  public function calculateOrderPrice($product_ids) {
+    $total_tax = 0;
+    $total = 0;
+    $additions = [];
+    $total_order = [];
+    if($product_ids) {
+      foreach ($product_ids as $key => $product_id) {
+        if ($product_id != 0) {
+          /** @var ProductEntity $product */
+          $product = $this->entityTypeManager->getStorage('product_entity')->load($product_id);
+          $price = $product->getProductPrice();
+          $product_additions = $this->getProductTaxes($product, $price);
+          if(count($product_additions)) {
+            $additions = array_merge($additions, $product_additions);
+          }
+          $total = $total + $price;
+        }
+      }
+      foreach ($additions as $addition) {
+        $total_tax = $total_tax + $addition;
+        $total_tax = round($total_tax ,2);
+      }
+      $total_order = ['total_tax' => $total_tax, 'total_order' => $total + $total_tax];
+    }
+    return $total_order;
   }
 }

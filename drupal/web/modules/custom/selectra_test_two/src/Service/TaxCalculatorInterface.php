@@ -5,7 +5,7 @@ namespace Drupal\selectra_test_two\Service;
 interface TaxCalculatorInterface {
 
   /**
-   * Calculates taxes for product.
+   * Calculates full product price.
    *
    * @param int $product_id
    *   Product Entity id.
@@ -24,6 +24,19 @@ interface TaxCalculatorInterface {
    * @return array
    *   Array for total tax and total order values.
    */
-  public function calculateOrderTaxes($product_ids);
+  public function calculateOrderPrice($product_ids);
+
+  /**
+   * Calculates taxes for product.
+   *
+   * @param $product
+   *   ProductEntity $product
+   * @param array $price
+   *   ProductEntity price
+   *
+   * @return array
+   *   Array for total tax and total order values.
+   */
+  public function getProductTaxes($product, $price);
 
 }

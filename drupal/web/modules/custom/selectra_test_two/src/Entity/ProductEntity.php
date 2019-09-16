@@ -227,6 +227,13 @@ class ProductEntity extends EditorialContentEntityBase implements ProductEntityI
     $this->set('imported', $imported);
     return $this;
   }
+  /**
+   * {@inheritdoc}
+   */
+  public function setProductType($type) {
+    $this->set('type', $type);
+    return $this;
+  }
 
   /**
    * {@inheritdoc}
